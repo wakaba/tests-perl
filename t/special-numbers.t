@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-print "1..10\n";
+print "1..12\n";
 
 my $i = 1;
 
@@ -35,6 +35,29 @@ for (
       $got =~ s/(.)/sprintf '%%%02X', ord $1/ges;
       print "not ok $i # $got\n";
     }
+  }
+  $i++;
+}
+
+{
+  require POSIX;
+  my $v = POSIX::fmod(12,0);
+  my $x = v5.22 le $^V ? 'NaN' : '-nan';
+  if ($v eq $x) {
+    print "ok $i # $v\n";
+  } else {
+    print "not ok $i # $v\n";
+  }
+  $i++;
+}
+
+{
+  my $v = 1/"-Inf";
+  my $x = v5.12 le $^V ? '0' : '-0';
+  if ($v eq $x) {
+    print "ok $i # $v\n";
+  } else {
+    print "not ok $i # $v\n";
   }
   $i++;
 }
