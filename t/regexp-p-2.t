@@ -1,9 +1,8 @@
 package RegexpPatternTest;
 use strict;
 use warnings;
+no warnings "utf8";
 require 'local/RegexpPattern.pm';
-
-eval q{ no warnings "utf8" } if $^V lt v5.10;
 
 print "1..15\n";
 
