@@ -3,9 +3,10 @@ use strict;
 use warnings;
 require 'local/RegexpPattern.pm';
 
-print "1..14\n";
+print "1..15\n";
 
-my $i = 0;
+my $i = 1;
+
 for my $test (
   qq{\x{43}},
   qq{\x{5f}},
