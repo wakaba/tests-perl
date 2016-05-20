@@ -3,11 +3,12 @@ use strict;
 use warnings;
 require 'local/RegexpPattern.pm';
 
-print "1..12\n";
+print "1..14\n";
 
 my $i = 0;
 for my $test (
   qq{\x{43}},
+  qq{\x{5f}},
   qq{\x{4e00}},
   qq{\x{100}},
   qq{\x{20000}},
@@ -29,6 +30,7 @@ for my $test (
   qq{\x80},
   qq{\x{D800}},
   qq{\x{FFFF}},
+  qq{\x{FFFFF}},
   qq{\x{110000}},
 ) {
   if ($test =~ /\A\p{InXMLNameStartChar}\z/) {
