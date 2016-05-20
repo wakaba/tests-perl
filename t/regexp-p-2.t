@@ -3,6 +3,8 @@ use strict;
 use warnings;
 require 'local/RegexpPattern.pm';
 
+eval q{ no warnings "utf8" } if $^V lt v5.10;
+
 print "1..15\n";
 
 my $i = 1;
