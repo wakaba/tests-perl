@@ -1,9 +1,23 @@
 use strict;
 use warnings;
 
-print "1..12\n";
+print "1..15\n";
 
 my $i = 1;
+
+for (
+  [1/"inf", '0', '0'],
+  [1/"-inf", '0', '-0'],
+  [0+'0 but true', '0', '0'],
+) {
+  my ($input, $expected1, $expected2) = @$_;
+  if ($input eq (v5.14 le $^V ? $expected1 : $expected2)) {
+    print "ok $i # $input\n";
+  } else {
+    print "not ok $i # $input\n";
+  }
+  $i++;
+}
 
 for (
   [0+'nan', 'NaN', 'nan', "\x00\x00\x00\x00", qr/^Cannot pack NaN with/],
